@@ -19,6 +19,26 @@ namespace Vidly.Controllers
         {
             var movie = new Movie() {Name = "Something"};
             return View(movie);
+            //return new ViewResult(movie);
+            //return Content("Hello World");
+            //return HttpNotFound();
+            //return new EmptyResult();
+            //return RedirectToAction("Index", "Home", new{page=1, sortBy="name"});
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return Content("ID = "+id);
+
+        }
+
+        public ActionResult Index(int? pageIndex, string sortBy)
+        {
+            if (!pageIndex.HasValue)
+                pageIndex = 1;
+            if (String.IsNullOrWhiteSpace(sortBy))
+                sortBy = "Default text";
+            return Content(String.Format("PageIndex= {0} & sortBy = {1}", pageIndex, sortBy));
         }
     }
 }

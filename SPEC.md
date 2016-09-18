@@ -25,6 +25,38 @@ Open Online Video Platform
 	  => add it to the project
 	  => rename it like as bootstrap-lumen.css
 	  
-	  
-
+04. ActionResult: An ActionResult is a return type of a controller method, also 
+    called an action method, and serves as the base class for *Result classes. 
+	Action methods return models to views, file streams, redirect to other controllers,
+	or whatever is necessary for the task at hand 
+	,,,
+    	 public ActionResult Random()
+        {
+            var movie = new Movie() {Name = "Something"};
+            return View(movie);
+            //return new ViewResult(movie);
+            //return Content("Hello World");
+            //return HttpNotFound();
+            //return new EmptyResult();
+            //return RedirectToAction("Index", "Home", new{page=1, sortBy="name"});
+        }
+    ,,,
 	
+05. Action Parameters: Which are the inputs for actions. When a request comes in an
+    application, asp.net mvc automatically maps request data to parameter values for 
+	action methods. If an action method takes a parameter, the mvc framework looks 
+    for parameter with the same name with the request data. 	
+	
+	=> to make a parameter optional, make it null-able in the action method. In movies
+	   controller
+	   ```
+	    public ActionResult Index(int? pageIndex, string sortBy)
+        {
+            if (!pageIndex.HasValue)
+                pageIndex = 1;
+            if (String.IsNullOrWhiteSpace(sortBy))
+                sortBy = "Default text";
+            return Content(String.Format("PageIndex= {0} & sortBy = {1}", pageIndex, sortBy));
+        }
+	    ```
+	=>	
