@@ -42,6 +42,7 @@ Open Online Video Platform
         }
     ,,,
 	
+	
 05. Action Parameters: Which are the inputs for actions. When a request comes in an
     application, asp.net mvc automatically maps request data to parameter values for 
 	action methods. If an action method takes a parameter, the mvc framework looks 
@@ -59,4 +60,39 @@ Open Online Video Platform
             return Content(String.Format("PageIndex= {0} & sortBy = {1}", pageIndex, sortBy));
         }
 	    ```
-	=>	
+		
+		
+06. Convention based routing/custom route: 
+	    we want a url like this -> movies/Released/12/2
+        in the RouteConfig.cs 
+		
+        ```
+		 routes.MapRoute(
+                "MoviesByReleaseDate",
+                "Movies/Released/{year}/{month}",   // url pattern
+                new { Controller = "Movies", action = "ByReleaseDate"}  
+                );
+        ``` 
+		
+		in the movies controller
+		
+		```
+		   public ActionResult ByReleaseDate(int year, int month)
+        {
+            return Content(year+"/"+month);
+        }
+		```
+		
+		Add constraint/regular expression to route
+		
+		```
+		    routes.MapRoute(
+                "MoviesByReleaseDate",
+                "Movies/Released/{year}/{month}",
+                new { Controller = "Movies", action = "ByReleaseDate"},
+                new { year = @"\d{4}", month = @"\d{2}"}
+				//  new { year = @"2015|2016", month = @"\d{2}" } // only for 2015 or 2016
+                );
+		```   
+07. 		
+		
