@@ -94,5 +94,35 @@ Open Online Video Platform
 				//  new { year = @"2015|2016", month = @"\d{2}" } // only for 2015 or 2016
                 );
 		```   
-07. 		
 		
+		
+07. Attribute routing: 		
+		a. For the case of custom routing in the RouteConfig.cs, if the application is large than the file will
+		   be a mess. 
+		b. You have to go back and forth between your custom routes and actions. 
+        c. Third issue is that, when you rename an action in the controller, you have to go back to the route file 
+           to rename it. 
+    To resolve this issue, asp.net mvc5 introduced a cleaner and embeded way for custom routing, that is attribute 
+	routing. 
+    ***Enabling Attribute Routing
+    To enable Attribute Routing, we need to call the MapMvcAttributeRoutes method of the route collection class 
+	during configuration in the RouteConfig.cs file like as
+	  
+	  ```
+	     routes.MapMvcAttributeRoutes();
+	  ```
+   
+    And than define the route at the top of the action method like as 
+    
+      ```
+	    [Route("Users/about")]
+		
+		[Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2}):range(1, 12)}")]
+        public ActionResult ByReleaseDate(int year, int month)
+        {
+            return Content(year+"/"+month);
+        }
+	  
+      ``` 	  
+    	
+08. 		

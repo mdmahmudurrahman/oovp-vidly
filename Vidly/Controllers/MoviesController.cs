@@ -17,7 +17,7 @@ namespace Vidly.Controllers
 
         public ActionResult Random()
         {
-            var movie = new Movie() {Name = "Something"};
+            var movie = new Movie() { Name = "Something" };
             return View(movie);
             //return new ViewResult(movie);
             //return Content("Hello World");
@@ -28,7 +28,7 @@ namespace Vidly.Controllers
 
         public ActionResult Edit(int id)
         {
-            return Content("ID = "+id);
+            return Content("ID = " + id);
 
         }
 
@@ -41,6 +41,7 @@ namespace Vidly.Controllers
             return Content(String.Format("PageIndex= {0} & sortBy = {1}", pageIndex, sortBy));
         }
 
+        [Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2}):range(1, 12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year+"/"+month);
