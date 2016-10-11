@@ -66,5 +66,4 @@ F:\Source code_10_10_2012\MVC-project\Vidly\Vidly\bin\Microsoft.Owin.Security.Tw
 F:\Source code_10_10_2012\MVC-project\Vidly\Vidly\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\Source code_10_10_2012\MVC-project\Vidly\Vidly\obj\Debug\Vidly.dll
 F:\Source code_10_10_2012\MVC-project\Vidly\Vidly\obj\Debug\Vidly.pdb
-F:\Source code_10_10_2012\MVC-project\Vidly\Vidly\bin\Vidly.dll.CodeAnalysisLog.xml
-F:\Source code_10_10_2012\MVC-project\Vidly\Vidly\bin\Vidly.dll.lastcodeanalysissucceeded
+F:\Source code_10_10_2012\MVC-project\Vidly\Vidly\obj\Debug\Vidly.csprojResolveAssemblyReference.cache

@@ -277,4 +277,98 @@ And to get Employee details passed from Controller using ViewBag, View code will
 		4. The use of a ViewModel can make the interaction between model and view more simple
 		
 		
+
+10. Razor Syntax: Please follow the link for details 
+    http://www.tutorialsteacher.com/mvc/razor-syntax
+	
+	Inline expression:
+	   Start with @ symbol to write server side C# or VB code with Html code. For example, write 
+	   @Variable_Name to display a value of a server side variable. For example, DateTime.Now 
+	   returns a current date and time. So, write @DateTime.Now to display current datetime as 
+	   shown below. A single line expression does not require a semicolon at the end of the 
+	   expression.
+
+```
+	<h1>Razor syntax demo</h1>
+
+	<h2>@DateTime.Now.ToShortDateString()</h2>
+
+```	
+
+    Multi-statement Code block: You can write multiple line of server side code enclosed in 
+	    braces @{ ... }. Each line must ends with semicolon same as C#.	
 		
+```
+	@{
+		var date = DateTime.Now.ToShortDateString();
+		var message = "Hello World";
+	}
+
+	<h2>Today's date is: @date </h2>
+	<h3>@message</h3>
+
+```		
+		
+	
+    Display text from code block: Use @: or <text>/<text> to display texts within code block.
+
+
+```
+	@{
+		var date = DateTime.Now.ToShortDateString();
+		string message = "Hello World!";
+		@:Today's date is: @date <br />
+		@message                               
+	}
+
+
+	@{
+		var date = DateTime.Now.ToShortDateString();
+		string message = "Hello World!";
+		<text>Today's date is:</text> @date <br />
+		@message                               
+	}
+
+```	
+
+ 
+    if-else condition: Write if-else condition starting with @ symbol. The if-else code 
+	    block must be enclosed in braces { }, even for single statement. 
+	
+```
+	@if(DateTime.IsLeapYear(DateTime.Now.Year) )
+	{
+		@DateTime.Now.Year @:is a leap year.
+	}
+	else { 
+		@DateTime.Now.Year @:is not a leap year.
+	}
+
+```	
+    
+
+	for loop:
+	
+
+```
+	@for (int i = 0; i < 5; i++) { 
+		@i.ToString() <br />
+	}
+
+```	
+
+
+    Model: Use @model to use model object anywhere in the view.
+	
+	
+```
+	@model Student
+
+	<h2>Student Detail:</h2>
+	<ul>
+		<li>Student Id: @Model.StudentId</li>
+		<li>Student Name: @Model.StudentName</li>
+		<li>Age: @Model.Age</li>
+	</ul>
+
+```	
