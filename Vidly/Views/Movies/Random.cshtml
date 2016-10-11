@@ -1,5 +1,4 @@
-﻿@model Vidly.Models.Movie
-
+﻿@model Vidly.ViewModels.RandomMovieViewModel
 
 
 @{
@@ -7,7 +6,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>
-<p>@ViewData["test"]</p>
-<h3>@ViewBag.test1</h3>
+<h2>@Model.Movie.Name</h2>
+@Model.Customers.Count 
 

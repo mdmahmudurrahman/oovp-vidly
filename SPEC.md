@@ -252,3 +252,29 @@ And to get Employee details passed from Controller using ViewBag, View code will
 
 ```	
 
+
+
+09. Model Binding: With model binding, MVC framework converts the http request values (from query string 
+    or form collection) to action method parameters. These parameters can be of primitive type or complex 
+	type.
+
+	What is a ViewModel
+		1. Allow you to shape multiple entities from one or more data models or sources into a single object.
+		2. Optimized for consumption and rendering by the view.
+    
+	Why We Use ViewModel
+
+		1. If you need to pass more than one thing to a strongly-typed view (which is best practice),
+			you will generally want to create a separate class to do so.
+
+		2. This allows you to validate your ViewModel differently than your domain model for
+			attribute-based validation scenarios
+
+		3. Can be used to help shape and format data.
+			e.g: need a date or money value formatted a particular way?
+				  ViewModel is the best place to do it.
+
+		4. The use of a ViewModel can make the interaction between model and view more simple
+		
+		
+		
