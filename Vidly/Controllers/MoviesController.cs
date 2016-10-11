@@ -17,7 +17,11 @@ namespace Vidly.Controllers
 
         public ActionResult Random()
         {
-            var movie = new Movie() { Name = "Something" };
+            var movie = new Movie() { Name = "Somethxdvzsdxvsvfving" };
+
+            //ViewData["Movie"] = movie;
+            ViewData["test"] = "test case";
+            ViewBag.test1 = "test view bag";
             return View(movie);
             //return new ViewResult(movie);
             //return Content("Hello World");

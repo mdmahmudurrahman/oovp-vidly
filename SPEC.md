@@ -125,4 +125,130 @@ Open Online Video Platform
 	  
       ``` 	  
     	
-08. 		
+08. Passing data to view: 
+
+    Following are the available options to pass data from a Controller to View in ASP.NET MVC:
+
+		a. ViewBag
+		b. ViewData
+		c. TempData	
+
+    i) If we want to maintain state between a Controller and corresponding View- ViewData 
+	  and ViewBag are the available options but both of these options are limited to a single 
+	  server call (meaning it’s value will be null if a redirect occurs). But if we need to 
+	  maintain state from one Controller to another (redirect case), then TempData is the 
+	  other available option. 
+    
+ 	ii) ViewBag: 
+         1. ViewBag transfers data from the controller to the view, ideally temporary data which 
+		    in not included in a model.
+         2. ViewBag is a dynamic property that takes advantage of the new dynamic features in C# 4.0
+            You can assign any number of propertes and values to ViewBag
+         3. The ViewBag's life only lasts during the current http request. ViewBag values will be 
+		    null if redirection occurs.	
+			
+    ViewBag Example
+	
+```
+public class EmployeeController : Controller
+{
+          // GET: /Employee/
+         public ActionResult Index()
+        {
+                    ViewBag.EmployeeName = “Muhammad Hamza”;
+                    ViewBag.Company = “Web Development Company”;
+                    ViewBag.Address = “Dubai, United Arab Emirates”;
+                    return View();
+        }
+ }
+ 
+ 
+And to get Employee details passed from Controller using ViewBag, View code will be as follows: 
+
+<body>
+  <div>
+        <h1>Employee (ViewBag Data Example)</h1>
+        <div>
+			<b>Employee Name:</b> @ViewBag.EmployeeName<br />
+			<b>Company Name:</b> @ViewBag.Company<br />
+			<b>Address:</b> @ViewBag.Address<br />
+        </div>
+  </div>
+</body>
+
+```
+
+    iii) ViewData:   
+	     1. ViewData transfers data from the Controller to View, not vice-versa.
+         2. ViewData is derived from ViewDataDictionary which is a dictionary type.
+		 3. ViewData's life only lasts during current http request. ViewData values will be 
+		    cleared if redirection occurs.
+		 4. ViewData value must be type cast before use.
+		 5. ViewBag internally inserts data into ViewData dictionary. So the key of ViewData 
+		    and property of ViewBag must NOT match.
+			
+	ViewData Example
+
+
+
+```
+
+   public class EmployeeController : Controller
+	{
+			  // GET: /Employee/
+			 public ActionResult Index()
+			{
+						ViewData["EmployeeName"] = “Muhammad Hamza”;
+						ViewData["Company"] = “Web Development Company”;
+						ViewData["Address"] = “Dubai, United Arab Emirates”;
+						return View();
+			}
+	 }
+	And to get Employee details passed from Controller using ViewBag, View code will be as follows:
+
+	<body>
+	  <div>
+		<h1>Employee (ViewBag Data Example)</h1>
+		<div>
+			<b>Employee Name:</b> @ViewData["EmployeeName"]<br />
+			<b>Company Name:</b> @ViewData["Company"]<br />
+			<b>Address:</b> @ViewData["Address"]<br />
+		</div>
+	  </div>
+	</body>
+	
+```			
+
+
+    iv) TempData: 
+         1. TempData can be used to store data between two consecutive requests. TempData values will 
+		    be retained during redirection.
+		 2.	TemData is a TempDataDictionary type.
+		 3.	TempData internaly use Session to store the data. So think of it as a short lived session.
+		 4.	TempData value must be type cast before use. Check for null values to avoid runtime error.
+		 5.	TempData can be used to store only one time messages like error messages, validation messages.
+		 6.	Call TempData.Keep() to keep all the values of TempData in a third request.	
+		 
+	TempData example
+
+```
+  public ActionResult Index()
+    {
+        TempData["myData"] = "Test data";
+        return View();
+    }
+
+    public ActionResult About()
+    {
+        string data;
+        
+        if(TempData["myData"] != null)
+            data = TempData["myData"] as string;
+        
+        TempData.Keep();
+        
+        return View();
+    }
+
+```	
+
