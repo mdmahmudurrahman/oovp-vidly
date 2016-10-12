@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Vidly.Models.Movie>
+
+@*@model IEnumerable<Standings.Models.Team>*@
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index page for movies</h2>
+
+
+@foreach (var movie in Model)
+{
+   <h4>@Html.ActionLink(@movie.Name, @movie.Id.ToString())</h4>
+}

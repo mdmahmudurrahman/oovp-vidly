@@ -51,13 +51,20 @@ namespace Vidly.Controllers
 
         }
 
-        public ActionResult Index(int? pageIndex, string sortBy)
+        public ActionResult Index()
         {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-            if (String.IsNullOrWhiteSpace(sortBy))
-                sortBy = "Default text";
-            return Content(String.Format("PageIndex= {0} & sortBy = {1}", pageIndex, sortBy));
+            List<Movie> movies = new List<Movie>()
+            {
+                new Movie { Id = 1, Name = "Prisoner"},
+                new Movie { Id = 2, Name = "Lord of the Ring"},
+                new Movie { Id = 3, Name = "Olympus has Fallen"}
+            };
+            return View(movies);
+        }
+
+        public ActionResult Details()
+        {
+            return View();
         }
 
         [Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2}):range(1, 12)}")]
